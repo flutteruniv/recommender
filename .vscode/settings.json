@@ -1,0 +1,28 @@
+{
+  "debug.openDebug": "openOnDebugBreak",
+  "[dart]": {
+		"editor.formatOnSave": true,
+		"editor.formatOnType": true,
+		"editor.rulers": [80],
+		"editor.selectionHighlight": false,
+		"editor.suggest.snippetsPreventQuickSuggestions": false,
+		"editor.suggestSelection": "recentlyUsedByPrefix",
+		"editor.tabCompletion": "onlySnippets",
+		"editor.wordBasedSuggestions": false,
+    "editor.codeActionsOnSave": [
+      "quickfix.insertSemicolon",
+      "source.organizeImports",
+      "source.addMissingImports",
+      "source.fixAll",
+    ]
+	},
+
+  // FVM
+  "dart.flutterSdkPath": ".fvm/flutter_sdk",
+  "search.exclude": {
+    "**/.fvm": true
+  },
+  "files.watcherExclude": {
+    "**/.fvm": true
+  }
+}
