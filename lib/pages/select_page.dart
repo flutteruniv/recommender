@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 
+import 'animation/flipbook.dart';
 import 'search_page.dart';
 
-class LaunchPage extends StatefulWidget {
-  const LaunchPage({super.key, required this.title});
+class SelectPage extends StatefulWidget {
+  const SelectPage({super.key, required this.title});
 
   final String title;
 
   @override
-  State<LaunchPage> createState() => _LaunchPageState();
+  State<SelectPage> createState() => _SelectPageState();
 }
 
-class _LaunchPageState extends State<LaunchPage> {
+class _SelectPageState extends State<SelectPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,12 +28,18 @@ class _LaunchPageState extends State<LaunchPage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
+                          builder: (context) => const Flipbook()));
+                },
+                child: const Text('Random')),
+            OutlinedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
                           builder: (context) => const SearchPage(title: 'Search',)));
                 },
                 child: const Text('Search')),
-            const Text(
-              'If you are at a loss to choose a gift for your loved one...',
-            ),
+
           ],
         ),
       ),
