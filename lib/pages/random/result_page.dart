@@ -79,7 +79,7 @@ class ResultPage extends StatelessWidget {
                           left: 40,
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.green,
+                          color: HexColor('288776'), // HexColorで指定
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: const Text(
@@ -102,16 +102,21 @@ class ResultPage extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Colors.white,
                         shape: BoxShape.circle,
+                        image: const DecorationImage(
+                            fit: BoxFit.fill,
+                            image: AssetImage('images/user_icon.jpg')),
                         border: Border.all(
-                          width: 1,
-                          color: Colors.grey,
+                          width: 3,
+                          color: HexColor('F4F4F3'),
                         ),
                       ),
                     ),
-                    const Text(
-                      'yui',
-                      style: TextStyle(
-                        fontSize: 14,
+                    Container(
+                      child: const Text(
+                        'yui',
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
                       ),
                     ),
                     Container(
@@ -121,11 +126,11 @@ class ResultPage extends StatelessWidget {
                       width: 112,
                       height: 20,
                       alignment: Alignment.center,
-                      child: const Text(
+                      child: Text(
                         'おすすめコメント',
                         style: TextStyle(
                           fontSize: 14,
-                          color: Colors.green,
+                          color: HexColor('288776'),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -151,36 +156,76 @@ class ResultPage extends StatelessWidget {
               margin: const EdgeInsets.only(
                 top: 12,
               ),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(width: 1, color: Colors.green),
-              ),
               width: 214,
               height: 56,
-              child: Container(
-                padding: const EdgeInsets.only(
-                  top: 13,
-                  right: 40,
-                  bottom: 13,
-                  left: 40,
+              child: OutlinedButton(
+                onPressed: () {},
+                style: OutlinedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  side: BorderSide(
+                    width: 1,
+                    color: HexColor('94D4C8'),
+                  ),
                 ),
-                width: 120,
-                height: 30,
-                child: const Text(
+                child: Text(
                   '←選びなおす',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: Colors.green,
+                    color: HexColor('288776'),
                   ),
-                  textAlign: TextAlign.center,
                 ),
               ),
             ),
+            // Container(
+            //   margin: const EdgeInsets.only(
+            //     top: 12,
+            //   ),
+            //   decoration: BoxDecoration(
+            //     color: Colors.white,
+            //     borderRadius: BorderRadius.circular(10),
+            //     border: Border.all(width: 1, color: HexColor('94D4C8')),
+            //   ),
+            //   width: 214,
+            //   height: 56,
+            //   child: Container(
+            //     padding: const EdgeInsets.only(
+            //       top: 13,
+            //       right: 40,
+            //       bottom: 13,
+            //       left: 40,
+            //     ),
+            //     width: 120,
+            //     height: 30,
+            //     child: Text(
+            //       '←選びなおす',
+            //       style: TextStyle(
+            //         fontSize: 20,
+            //         fontWeight: FontWeight.bold,
+            //         color: HexColor('288776'),
+            //       ),
+            //       textAlign: TextAlign.center,
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),
     );
   }
+}
+
+class HexColor extends Color {
+  static int _getColorFromHex(String hexColor) {
+    hexColor = hexColor.toUpperCase().replaceAll('#', '');
+    if (hexColor.length == 6) {
+      hexColor = 'FF$hexColor';
+    }
+    return int.parse(hexColor, radix: 16);
+  }
+
+  HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
 }
