@@ -43,5 +43,9 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
+# firebase sdk keys
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+
 .fvm/flutter_sdk
 pubspec.lock
