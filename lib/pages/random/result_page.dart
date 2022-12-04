@@ -180,37 +180,6 @@ class ResultPage extends StatelessWidget {
                 ),
               ),
             ),
-            // Container(
-            //   margin: const EdgeInsets.only(
-            //     top: 12,
-            //   ),
-            //   decoration: BoxDecoration(
-            //     color: Colors.white,
-            //     borderRadius: BorderRadius.circular(10),
-            //     border: Border.all(width: 1, color: HexColor('94D4C8')),
-            //   ),
-            //   width: 214,
-            //   height: 56,
-            //   child: Container(
-            //     padding: const EdgeInsets.only(
-            //       top: 13,
-            //       right: 40,
-            //       bottom: 13,
-            //       left: 40,
-            //     ),
-            //     width: 120,
-            //     height: 30,
-            //     child: Text(
-            //       '←選びなおす',
-            //       style: TextStyle(
-            //         fontSize: 20,
-            //         fontWeight: FontWeight.bold,
-            //         color: HexColor('288776'),
-            //       ),
-            //       textAlign: TextAlign.center,
-            //     ),
-            //   ),
-            // ),
           ],
         ),
       ),
