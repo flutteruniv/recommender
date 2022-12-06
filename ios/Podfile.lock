@@ -106,7 +106,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 813838072b797b64f529f3c2ee35e696e5641dd1
   FirebaseCoreExtension: d08b424832917cf13612021574399afbbedffeef
   FirebaseCoreInternal: 091bde13e47bb1c5e9fe397634f3593dc390430f
-  FirebaseFirestore: 410df999af5c53d4d289ed16a863940a116e1d35
+  FirebaseFirestore: 8efd95c87f0210125fbd50d1a894e2693053c9c9
   FirebaseStorage: e7b3fdc90b579cda35e5a0e4c6b206325766e75a
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   GoogleUtilities: bad72cb363809015b1f7f19beb1f1cd23c589f95
