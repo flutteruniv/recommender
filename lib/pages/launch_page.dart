@@ -1,12 +1,8 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:recommender_app/firebase_options.dart';
 
 
 class LaunchPage extends StatefulWidget {
-  const LaunchPage({super.key, required this.title});
-
-  final String title;
+  const LaunchPage({super.key});
 
   @override
   State<LaunchPage> createState() => _LaunchPageState();
