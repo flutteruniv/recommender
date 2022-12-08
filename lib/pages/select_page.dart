@@ -44,7 +44,7 @@ class _SelectPageState extends State<SelectPage> {
               height: 36,
               child: const Text(
                 'どっちでさがす？',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
               ),
             ),
             Container(
@@ -76,7 +76,7 @@ class _SelectPageState extends State<SelectPage> {
                           'ランダム',
                           style: TextStyle(
                             fontSize: 24,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w500,
                             color: Colors.white,
                           ),
                         ),
@@ -129,7 +129,7 @@ class _SelectPageState extends State<SelectPage> {
                           // 工事中だよみたいなポップアップ出す
                           style: TextStyle(
                             fontSize: 24,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w500,
                             color: Colors.white,
                           ),
                         ),

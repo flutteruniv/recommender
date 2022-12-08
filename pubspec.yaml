@@ -28,3 +28,10 @@ flutter:
   assets:
     - images/
     - images/animation/
+
+  fonts:
+    - family: Koruri
+      fonts:
+        - asset: fonts/Koruri-Bold.ttf
+        - asset: fonts/Koruri-Regular.ttf
+        - asset: fonts/Koruri-Semibold.ttf
