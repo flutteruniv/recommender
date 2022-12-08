@@ -24,3 +24,5 @@ Flutter大学女子部 共同開発 第一弾のレコメンだーのプロジ�
     │   └── result_page.dart
     └── animation
 ```
+
+- [デザインデータ](https://www.figma.com/file/vAXW0QonclIT2snuPDKZAD/recommend-app?node-id=0%3A1)
