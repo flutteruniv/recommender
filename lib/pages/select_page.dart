@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:recommender_app/model/item.dart';
 
 import 'custom_page_route.dart';
@@ -33,6 +34,7 @@ class _SelectPageState extends State<SelectPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: HexColor('EAE8E4'),
       body: Center(
         child: Column(
           children: [
@@ -166,16 +168,4 @@ class _SelectPageState extends State<SelectPage> {
     final item = items[ram.nextInt(items.length)];
     return item;
   }
-}
-
-class HexColor extends Color {
-  static int _getColorFromHex(String hexColor) {
-    hexColor = hexColor.toUpperCase().replaceAll('#', '');
-    if (hexColor.length == 6) {
-      hexColor = 'FF$hexColor';
-    }
-    return int.parse(hexColor, radix: 16);
-  }
-
-  HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
 }
