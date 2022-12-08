@@ -1,7 +1,18 @@
-import 'package:flutter/material.dart';
+import 'dart:math';
 
-class SelectPage extends StatelessWidget {
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:recommender_app/model/item.dart';
+
+class SelectPage extends StatefulWidget {
   const SelectPage({super.key});
+
+  @override
+  State<SelectPage> createState() => _SelectPageState();
+}
+
+class _SelectPageState extends State<SelectPage> {
+  List<Item> items = [];
 
   @override
   Widget build(BuildContext context) {
