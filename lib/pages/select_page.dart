@@ -94,6 +94,21 @@ class SelectPage extends StatelessWidget {
       ),
     );
   }
+
+  /// Firestoreのデータを取得し、listに格納
+  Future<List<Item>> fetchItem() async {
+    final snapshots =
+        await FirebaseFirestore.instance.collection('items').get();
+    final list = snapshots.docs.map((doc) => Item(doc)).toList();
+    return list;
+  }
+
+  /// listの中からランダムで1つアイテム取り出す
+  Item getRandomItem() {
+    final ram = Random(DateTime.now().millisecondsSinceEpoch);
+    final item = items[ram.nextInt(items.length)];
+    return item;
+  }
 }
 
 class HexColor extends Color {
