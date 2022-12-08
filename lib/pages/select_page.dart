@@ -107,7 +107,7 @@ class _SelectPageState extends State<SelectPage> {
   }
 
   /// Firestoreのデータを取得し、listに格納
-  Future<List<Item>> fetchItem() async {
+  Future<List<Item>> fetchItems() async {
     final snapshots =
         await FirebaseFirestore.instance.collection('items').get();
     final list = snapshots.docs.map((doc) => Item(doc)).toList();
