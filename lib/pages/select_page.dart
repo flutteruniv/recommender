@@ -1,7 +1,18 @@
-import 'package:flutter/material.dart';
+import 'dart:math';
 
-class SelectPage extends StatelessWidget {
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:recommender_app/model/item.dart';
+
+class SelectPage extends StatefulWidget {
   const SelectPage({super.key});
+
+  @override
+  State<SelectPage> createState() => _SelectPageState();
+}
+
+class _SelectPageState extends State<SelectPage> {
+  List<Item> items = [];
 
   @override
   Widget build(BuildContext context) {
@@ -93,6 +104,21 @@ class SelectPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  /// Firestoreのデータを取得し、listに格納
+  Future<List<Item>> fetchItems() async {
+    final snapshots =
+        await FirebaseFirestore.instance.collection('items').get();
+    final list = snapshots.docs.map((doc) => Item(doc)).toList();
+    return list;
+  }
+
+  /// listの中からランダムで1つアイテム取り出す
+  Item getRandomItem() {
+    final ram = Random(DateTime.now().millisecondsSinceEpoch);
+    final item = items[ram.nextInt(items.length)];
+    return item;
   }
 }
 
