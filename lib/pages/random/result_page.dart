@@ -1,10 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 import '../../model/item.dart';
 import '../custom_page_route.dart';
 import 'animation/short_flip.dart';
+import 'package:url_launcher/link.dart';
 
 class ResultPage extends StatelessWidget {
   const ResultPage({super.key, required this.item, required this.items});
@@ -38,10 +39,10 @@ class ResultPage extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 16),
-                      Image.asset(
+                      Image(image:NetworkImage(
                         item.itemImage ?? "",
-                      ),
-                      const SizedBox(height: 16),
+                      ),),
+                     const SizedBox(height: 16),
                       Container(
                         margin: const EdgeInsets.only(
                           top: 8,
@@ -59,26 +60,24 @@ class ResultPage extends StatelessWidget {
                         width: 123,
                         height: 36,
                         child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white,
-                            backgroundColor: HexColor('288776'),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: Colors.white,
+                              backgroundColor: HexColor('288776'),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
                             ),
-                          ),
-                          onPressed: () {
-                            // TODO リンクを埋め込む
-                          },
-                          child: const Text(
-                            'Link',
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
+                            onPressed: () {},
+                            child: const Text(
+                              'Link',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
-                      ),
                       const SizedBox(height: 8),
                       Container(
                         width: 60,
@@ -88,7 +87,7 @@ class ResultPage extends StatelessWidget {
                           shape: BoxShape.circle,
                           image: DecorationImage(
                               fit: BoxFit.fill,
-                              image: AssetImage(item.memberIcon ?? "")),
+                              image: NetworkImage(item.memberIcon ?? "")),
                           border: Border.all(
                             width: 3,
                             color: HexColor('F4F4F3'),
@@ -166,11 +165,23 @@ class ResultPage extends StatelessWidget {
       ),
     );
   }
+
   Item getRandomItem() {
     final ram = Random(DateTime.now().millisecondsSinceEpoch);
     final item = items[ram.nextInt(items.length)];
     return item;
   }
+/*
+  void _openUrl() async {
+    const url = item.storeUrl ?? ""; //←ここに表示させたいURLを入力する
+      await launchUrl(
+        url,
+        //forceSafariVC: true,
+        //forceWebView: true,
+      );
+  }
+
+ */
 }
 
 class HexColor extends Color {

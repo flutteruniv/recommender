@@ -49,7 +49,7 @@ class _ShortFlipState extends State<ShortFlip>{
         Navigator.push(
           context,
           CustomPageRoute(
-            ResultPage(item: widget.item, items: []),
+            ResultPage(item: widget.item, items: widget.items),
           ),
         );
       },
@@ -65,8 +65,13 @@ class _ShortFlipState extends State<ShortFlip>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: items,
+      body: Center(
+        child: SizedBox(
+          width: 400,
+          child: Stack(
+            children: items,
+          ),
+        ),
       ),
     );
   }

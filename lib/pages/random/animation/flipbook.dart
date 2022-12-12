@@ -113,8 +113,13 @@ class _FlipbookState extends State<Flipbook>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: flips,
+      body: Center(
+        child: SizedBox(
+          width: 400,
+          child: Stack(
+            children: flips,
+          ),
+        ),
       ),
     );
   }

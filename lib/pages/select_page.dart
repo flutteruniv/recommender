@@ -97,34 +97,52 @@ class _SelectPageState extends State<SelectPage> {
               margin: const EdgeInsets.only(top: 24),
               height: 207.69,
               width: 248,
-              child: Card(
-                color: HexColor('288776'),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)),
-                child: Column(
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(top: 24),
-                      width: 120,
-                      height: 36,
-                      child: const Text(
-                        '条件で絞る',
-                        // 工事中だよみたいなポップアップ出す
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
+              child: GestureDetector(
+                onTap: (){
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: const Text("Coming Soon !"),
+                        actions: [
+                          TextButton(
+                            child: Text("OK"),
+                            onPressed: () => Navigator.pop(context),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+                child: Card(
+                  color: HexColor('288776'),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30)),
+                  child: Column(
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(top: 24),
+                        width: 120,
+                        height: 36,
+                        child: const Text(
+                          '条件で絞る',
+                          // 工事中だよみたいなポップアップ出す
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
-                    ),
-                    Container(
-                        margin: const EdgeInsets.only(
-                          top: 16,
-                        ),
-                        height: 107.69,
-                        width: 100,
-                        child: Image.asset('images/presents_conditions.jpg'))
-                  ],
+                      Container(
+                          margin: const EdgeInsets.only(
+                            top: 16,
+                          ),
+                          height: 107.69,
+                          width: 100,
+                          child: Image.asset('images/presents_conditions.jpg'))
+                    ],
+                  ),
                 ),
               ),
             ),
