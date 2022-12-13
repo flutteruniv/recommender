@@ -1,7 +1,16 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../../model/item.dart';
+import '../custom_page_route.dart';
+import 'animation/short_flip.dart';
+import 'package:url_launcher/link.dart';
 
 class ResultPage extends StatelessWidget {
-  const ResultPage({super.key});
+  const ResultPage({super.key, required this.item, required this.items});
+  final Item item;
+  final List<Item> items;
 
   @override
   Widget build(BuildContext context) {
@@ -21,26 +30,26 @@ class ResultPage extends StatelessWidget {
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
                     children: [
-                      const Text(
-                        'Starbucksの\nドリンクチケット',
-                        style: TextStyle(
+                      Text(
+                        item.name ?? "",
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 24,
                         ),
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 16),
-                      Image.asset(
-                        'images/starbucks.jpg',
-                      ),
-                      const SizedBox(height: 16),
+                      Image(image:NetworkImage(
+                        item.itemImage ?? "",
+                      ),),
+                     const SizedBox(height: 16),
                       Container(
                         margin: const EdgeInsets.only(
                           top: 8,
                         ),
-                        child: const Text(
-                          '¥220,000',
-                          style: TextStyle(
+                        child: Text(
+                          '¥ ${item.cost ?? ""}',
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
                           ),
@@ -51,24 +60,24 @@ class ResultPage extends StatelessWidget {
                         width: 123,
                         height: 36,
                         child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white,
-                            backgroundColor: HexColor('288776'),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: Colors.white,
+                              backgroundColor: HexColor('288776'),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
                             ),
-                          ),
-                          onPressed: () {},
-                          child: const Text(
-                            'Link',
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
+                            onPressed: () {},
+                            child: const Text(
+                              'Link',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
-                      ),
                       const SizedBox(height: 8),
                       Container(
                         width: 60,
@@ -76,9 +85,9 @@ class ResultPage extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           shape: BoxShape.circle,
-                          image: const DecorationImage(
+                          image: DecorationImage(
                               fit: BoxFit.fill,
-                              image: AssetImage('images/user_icon.jpg')),
+                              image: NetworkImage(item.memberIcon ?? "")),
                           border: Border.all(
                             width: 3,
                             color: HexColor('F4F4F3'),
@@ -86,9 +95,9 @@ class ResultPage extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 8),
-                      const Text(
-                        'yui',
-                        style: TextStyle(
+                      Text(
+                        item.memberName ?? "",
+                        style: const TextStyle(
                           fontSize: 14,
                         ),
                       ),
@@ -102,9 +111,9 @@ class ResultPage extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 8),
-                      const Text(
-                        '500円のカードでももらえるとシンプルに嬉しい！スタバは毎日行きたい。',
-                        style: TextStyle(
+                      Text(
+                        item.memberMessage ?? "",
+                        style: const TextStyle(
                           fontSize: 13,
                         ),
                         textAlign: TextAlign.center,
@@ -121,7 +130,16 @@ class ResultPage extends StatelessWidget {
               width: 214,
               height: 56,
               child: OutlinedButton(
-                onPressed: () {},
+                onPressed: () {
+                    final item = getRandomItem();
+
+                    Navigator.push(
+                      context,
+                      CustomPageRoute(
+                        ShortFlip(item: item, items: items),
+                      ),
+                    );
+                },
                 style: OutlinedButton.styleFrom(
                   backgroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
@@ -147,6 +165,23 @@ class ResultPage extends StatelessWidget {
       ),
     );
   }
+
+  Item getRandomItem() {
+    final ram = Random(DateTime.now().millisecondsSinceEpoch);
+    final item = items[ram.nextInt(items.length)];
+    return item;
+  }
+/*
+  void _openUrl() async {
+    const url = item.storeUrl ?? ""; //←ここに表示させたいURLを入力する
+      await launchUrl(
+        url,
+        //forceSafariVC: true,
+        //forceWebView: true,
+      );
+  }
+
+ */
 }
 
 class HexColor extends Color {

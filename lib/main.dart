@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:recommender_app/firebase_options.dart';
 import 'package:recommender_app/pages/launch_page.dart';
 
+import 'pages/select_page.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
