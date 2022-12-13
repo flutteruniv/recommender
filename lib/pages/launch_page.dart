@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recommender_app/pages/select_page.dart';
 
 
 class LaunchPage extends StatefulWidget {
@@ -14,34 +15,21 @@ class _LaunchPageState extends State<LaunchPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xff288776),
-      body: Center(
-        child: Stack(
-          alignment: AlignmentDirectional.center,
-          children: <Widget>[
-            Positioned(
-              top: 50,
-              child: SizedBox(
-                  width: 280,
-                  child: Image.asset('images/logo.png')
-              ),
+      body: GestureDetector(
+        onTap:(){
+          Navigator.push(context,
+              MaterialPageRoute(
+                builder:(context)
+              => const SelectPage(),
+              )
+          );
+        },
+        child: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(image: AssetImage('images/frame.png'),
+              fit: BoxFit.cover,
             ),
-            Positioned(
-              child: SizedBox(
-                  width: 330,
-                  child: Image.asset('images/santa.png')
-              ),
-            ),
-            Positioned(
-              top: 300,
-              width: 250,
-              height: 250,
-              child: SizedBox(
-                  height: 10,
-                  width: 10,
-                  child: Image.asset('images/presentbox.png')
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );
