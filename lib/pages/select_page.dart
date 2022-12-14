@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:recommender_app/model/item.dart';
@@ -23,8 +22,7 @@ class _SelectPageState extends State<SelectPage> {
   void initState() {
     super.initState();
     Future(() async {
-      final snapshots =
-      await fetchItems();
+      final snapshots = await fetchItems();
       setState(() {
         items = snapshots;
       });
@@ -58,10 +56,10 @@ class _SelectPageState extends State<SelectPage> {
                   final item = getRandomItem();
 
                   Navigator.push(
-                      context,
-                      CustomPageRoute(
-                        Flipbook(item: item, items: items),
-                      ),
+                    context,
+                    CustomPageRoute(
+                      Flipbook(item: item, items: items),
+                    ),
                   );
                 },
                 child: Card(
@@ -100,7 +98,7 @@ class _SelectPageState extends State<SelectPage> {
               height: 207.69,
               width: 248,
               child: GestureDetector(
-                onTap: (){
+                onTap: () {
                   showDialog(
                     context: context,
                     builder: (context) {
@@ -108,7 +106,7 @@ class _SelectPageState extends State<SelectPage> {
                         title: const Text("Coming Soon !"),
                         actions: [
                           TextButton(
-                            child: Text("OK"),
+                            child: const Text("OK"),
                             onPressed: () => Navigator.pop(context),
                           ),
                         ],
