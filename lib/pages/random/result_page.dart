@@ -5,7 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../model/item.dart';
 import '../custom_page_route.dart';
 import 'animation/short_flip.dart';
-import 'package:url_launcher/link.dart';
+
 
 class ResultPage extends StatelessWidget {
   const ResultPage({super.key, required this.item, required this.items});
