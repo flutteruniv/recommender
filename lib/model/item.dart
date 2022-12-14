@@ -9,7 +9,7 @@ class Item {
     cost = doc.data()!['cost'];
     costType = doc.data()!['cost_type'];
     itemImage = doc.data()!['item_image'];
-    //storeUrl = doc.data()!['store_url'];
+    storeUrl = doc.data()!['store_url'];
     memberName = doc.data()!['member_name'];
     memberMessage = doc.data()!['member_message'];
     memberIcon = doc.data()!['member_icon'];
@@ -34,7 +34,7 @@ class Item {
   String? itemImage;
 
   /// 商品ページurl
-  //Uri? storeUrl;
+  String? storeUrl;
 
   /// メンバー名
   String? memberName;
