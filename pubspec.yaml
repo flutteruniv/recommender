@@ -16,6 +16,7 @@ dependencies:
   firebase_storage: ^11.0.5
   url_launcher: ^6.1.7
   cached_network_image: ^3.2.3
+  hexcolor: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -28,3 +29,10 @@ flutter:
   assets:
     - images/
     - images/animation/
+
+  fonts:
+    - family: Koruri
+      fonts:
+        - asset: fonts/Koruri-Bold.ttf
+        - asset: fonts/Koruri-Regular.ttf
+        - asset: fonts/Koruri-Semibold.ttf

@@ -1,8 +1,8 @@
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:recommender_app/model/item.dart';
 
 import 'custom_page_route.dart';
@@ -22,8 +22,7 @@ class _SelectPageState extends State<SelectPage> {
   void initState() {
     super.initState();
     Future(() async {
-      final snapshots =
-      await fetchItems();
+      final snapshots = await fetchItems();
       setState(() {
         items = snapshots;
       });
@@ -33,6 +32,7 @@ class _SelectPageState extends State<SelectPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: HexColor('EAE8E4'),
       body: Center(
         child: Column(
           children: [
@@ -44,7 +44,7 @@ class _SelectPageState extends State<SelectPage> {
               height: 36,
               child: const Text(
                 'どっちでさがす？',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
               ),
             ),
             Container(
@@ -56,10 +56,10 @@ class _SelectPageState extends State<SelectPage> {
                   final item = getRandomItem();
 
                   Navigator.push(
-                      context,
-                      CustomPageRoute(
-                        Flipbook(item: item, items: items),
-                      ),
+                    context,
+                    CustomPageRoute(
+                      Flipbook(item: item, items: items),
+                    ),
                   );
                 },
                 child: Card(
@@ -76,7 +76,7 @@ class _SelectPageState extends State<SelectPage> {
                           'ランダム',
                           style: TextStyle(
                             fontSize: 24,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w500,
                             color: Colors.white,
                           ),
                         ),
@@ -98,7 +98,7 @@ class _SelectPageState extends State<SelectPage> {
               height: 207.69,
               width: 248,
               child: GestureDetector(
-                onTap: (){
+                onTap: () {
                   showDialog(
                     context: context,
                     builder: (context) {
@@ -106,7 +106,7 @@ class _SelectPageState extends State<SelectPage> {
                         title: const Text("Coming Soon !"),
                         actions: [
                           TextButton(
-                            child: Text("OK"),
+                            child: const Text("OK"),
                             onPressed: () => Navigator.pop(context),
                           ),
                         ],
@@ -129,7 +129,7 @@ class _SelectPageState extends State<SelectPage> {
                           // 工事中だよみたいなポップアップ出す
                           style: TextStyle(
                             fontSize: 24,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w500,
                             color: Colors.white,
                           ),
                         ),
@@ -166,16 +166,4 @@ class _SelectPageState extends State<SelectPage> {
     final item = items[ram.nextInt(items.length)];
     return item;
   }
-}
-
-class HexColor extends Color {
-  static int _getColorFromHex(String hexColor) {
-    hexColor = hexColor.toUpperCase().replaceAll('#', '');
-    if (hexColor.length == 6) {
-      hexColor = 'FF$hexColor';
-    }
-    return int.parse(hexColor, radix: 16);
-  }
-
-  HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
 }

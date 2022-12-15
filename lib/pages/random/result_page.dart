@@ -1,11 +1,12 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 import '../../model/item.dart';
 import '../custom_page_route.dart';
 import 'animation/short_flip.dart';
-
 
 class ResultPage extends StatelessWidget {
   const ResultPage({super.key, required this.item, required this.items});
@@ -41,11 +42,13 @@ class ResultPage extends StatelessWidget {
                       const SizedBox(height: 16),
                       SizedBox(
                         height: 300,
-                        child: Image(image:NetworkImage(
-                          item.itemImage ?? "",
-                        ),),
+                        child: Image(
+                          image: NetworkImage(
+                            item.itemImage ?? "",
+                          ),
+                        ),
                       ),
-                     const SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       Container(
                         margin: const EdgeInsets.only(
                           top: 8,
@@ -63,24 +66,26 @@ class ResultPage extends StatelessWidget {
                         width: 123,
                         height: 36,
                         child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.white,
-                              backgroundColor: HexColor('288776'),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
+                          style: ElevatedButton.styleFrom(
+                            foregroundColor: Colors.white,
+                            backgroundColor: HexColor('288776'),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
                             ),
-                            onPressed: () {onLaunchUrl();},
-                            child: const Text(
-                              'Link',
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
+                          ),
+                          onPressed: () {
+                            onLaunchUrl();
+                          },
+                          child: const Text(
+                            'Link',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
+                      ),
                       const SizedBox(height: 8),
                       Container(
                         width: 60,
@@ -134,14 +139,14 @@ class ResultPage extends StatelessWidget {
               height: 56,
               child: OutlinedButton(
                 onPressed: () {
-                    final item = getRandomItem();
+                  final item = getRandomItem();
 
-                    Navigator.push(
-                      context,
-                      CustomPageRoute(
-                        ShortFlip(item: item, items: items),
-                      ),
-                    );
+                  Navigator.push(
+                    context,
+                    CustomPageRoute(
+                      ShortFlip(item: item, items: items),
+                    ),
+                  );
                 },
                 style: OutlinedButton.styleFrom(
                   backgroundColor: Colors.white,
@@ -174,23 +179,11 @@ class ResultPage extends StatelessWidget {
     final item = items[ram.nextInt(items.length)];
     return item;
   }
-  Future onLaunchUrl () async {
+
+  Future onLaunchUrl() async {
     final url = Uri.parse(item.storeUrl ?? "");
     if (await canLaunchUrl(url)) {
       await launchUrl(url);
     }
   }
-
-}
-
-class HexColor extends Color {
-  static int _getColorFromHex(String hexColor) {
-    hexColor = hexColor.toUpperCase().replaceAll('#', '');
-    if (hexColor.length == 6) {
-      hexColor = 'FF$hexColor';
-    }
-    return int.parse(hexColor, radix: 16);
-  }
-
-  HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
 }

@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:recommender_app/firebase_options.dart';
 import 'package:recommender_app/pages/launch_page.dart';
 
-import 'pages/select_page.dart';
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -19,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        fontFamily: 'Koruri',
       ),
       home: const LaunchPage(),
     );
