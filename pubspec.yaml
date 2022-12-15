@@ -34,5 +34,8 @@ flutter:
     - family: Koruri
       fonts:
         - asset: fonts/Koruri-Bold.ttf
+          weight: 700
         - asset: fonts/Koruri-Regular.ttf
+          weight: 400
         - asset: fonts/Koruri-Semibold.ttf
+          weight: 500
