@@ -5,7 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../model/item.dart';
 import '../custom_page_route.dart';
 import 'animation/short_flip.dart';
-import 'package:url_launcher/link.dart';
+
 
 class ResultPage extends StatelessWidget {
   const ResultPage({super.key, required this.item, required this.items});
@@ -39,9 +39,12 @@ class ResultPage extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 16),
-                      Image(image:NetworkImage(
-                        item.itemImage ?? "",
-                      ),),
+                      SizedBox(
+                        height: 300,
+                        child: Image(image:NetworkImage(
+                          item.itemImage ?? "",
+                        ),),
+                      ),
                      const SizedBox(height: 16),
                       Container(
                         margin: const EdgeInsets.only(
@@ -67,7 +70,7 @@ class ResultPage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {onLaunchUrl();},
                             child: const Text(
                               'Link',
                               style: TextStyle(
@@ -171,17 +174,13 @@ class ResultPage extends StatelessWidget {
     final item = items[ram.nextInt(items.length)];
     return item;
   }
-/*
-  void _openUrl() async {
-    const url = item.storeUrl ?? ""; //←ここに表示させたいURLを入力する
-      await launchUrl(
-        url,
-        //forceSafariVC: true,
-        //forceWebView: true,
-      );
+  Future onLaunchUrl () async {
+    final url = Uri.parse(item.storeUrl ?? "");
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    }
   }
 
- */
 }
 
 class HexColor extends Color {
