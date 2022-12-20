@@ -35,14 +35,12 @@ class _SelectPageState extends State<SelectPage> {
       backgroundColor: HexColor('EAE8E4'),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              margin: const EdgeInsets.only(
-                top: 156,
-              ),
+            const SizedBox(
               width: 216,
               height: 36,
-              child: const Text(
+              child: Text(
                 'どっちでさがす？',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
               ),
